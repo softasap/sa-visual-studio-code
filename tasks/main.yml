@@ -1,3 +1,3 @@
 ---
 # tasks file for sa-visual-studio-code
-  - include: microsoft_visual_studio_code.yml
+  - include: tasks_microsoft_visual_studio_code.yml
