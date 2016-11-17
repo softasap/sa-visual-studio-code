@@ -26,6 +26,6 @@
     -vscode
 
 - name: Visual Studio Code | Install Extensions
-  shell: code --install-extension {{item}}
+  shell: code --install-extension {{item}} {{extra_extension_params | default("")}}
   with_items: "{{vs_code_packages | default([])}}"
     
