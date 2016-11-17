@@ -24,3 +24,8 @@
   tags:
     -worktools
     -vscode
+
+- name: Visual Studio Code | Install Extensions
+  shell: code --install-extension {{item}}
+  with_items: "{{vs_code_packages | default([])}}"
+    

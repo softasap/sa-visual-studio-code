@@ -1,2 +1,3 @@
 ---
 # defaults file for sa-visual-studio-code
+  vs_code_packages: ["donjayamanne.python", "robertohuertasm.vscode-icons", "dbaeumer.vscode-eslint", "dbaeumer.jshint", "eg2.tslint", "EditorConfig.EditorConfig", "ms-vscode.mono-debug", "PeterJausovec.vscode-docker"]
