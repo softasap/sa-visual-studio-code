@@ -24,5 +24,7 @@
   roles:
     - {
         role: "role_under_test",
+        extra_extension_params: "--user-data-dir /home/root/.code-root-user-data", 
+        docker_test: true
       }
 
