@@ -6,7 +6,6 @@
   failed_when: vscode_check_deb.rc > 1
   changed_when: vscode_check_deb.rc == 1
   tags:
-    -worktools
     -vscode
 
 
@@ -14,7 +13,6 @@
   get_url: url="http://go.microsoft.com/fwlink/?LinkID=760868"  dest="/tmp/vsvode.deb"
   when: vscode_check_deb.rc == 1
   tags:
-    -worktools
     -vscode
 
 - name: Visual Studio Code | install package
@@ -22,10 +20,12 @@
   become: true
   when: vscode_check_deb.rc == 1
   tags:
-    -worktools
     -vscode
 
 - name: Visual Studio Code | Install Extensions
   shell: code --install-extension {{item}} {{extra_extension_params | default("")}}
   with_items: "{{vs_code_packages | default([])}}"
+  when: docker_test is not defined
+  tags:
+    -vscode
     
