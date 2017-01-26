@@ -14,7 +14,7 @@ env:
     playbook: test.yml
   - distribution: fedora
     version: 25
-    init: /bin/systemd
+    init: /usr/sbin/init
     run_opts: ""
     playbook: test.yml
   - distribution: centos
