@@ -3,9 +3,9 @@
 
 # Install package
 - include: install_microsoft_visual_studio_code_apt.yml
-  when: ansible_pkg_mgr == 'apt'
+  when: ansible_distribution == 'Debian' and ansible_pkg_mgr == 'apt'
 - include: install_microsoft_visual_studio_code_dnf.yml
-  when: ansible_pkg_mgr == 'dnf'
+  when: (when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'Fedora') and (ansible_pkg_mgr == 'dnf')
 
 # Platform independent tasks
 - include: install_extensions.yml
