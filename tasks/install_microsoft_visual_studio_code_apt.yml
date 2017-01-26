@@ -8,14 +8,13 @@
   tags:
     -vscode
 
-
-- name: Visual Studio Code | download package
-  get_url: url="http://go.microsoft.com/fwlink/?LinkID=760868"  dest="/tmp/vsvode.deb"
+- name: Visual Studio Code | Download package
+  get_url: url="http://go.microsoft.com/fwlink/?LinkID=760868" dest="/tmp/vsvode.deb"
   when: vscode_check_deb.rc == 1
   tags:
     -vscode
 
-- name: Visual Studio Code | install package
+- name: Visual Studio Code | Install package
   apt: deb="/tmp/vsvode.deb"
   become: true
   when: vscode_check_deb.rc == 1

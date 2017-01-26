@@ -1,0 +1,8 @@
+---
+
+- name: Visual Studio Code | Install extensions
+  shell: code --install-extension {{item}} {{extra_extension_params | default("")}}
+  with_items: "{{vs_code_packages | default([])}}"
+  when: docker_test is not defined
+  tags:
+    -vscode
