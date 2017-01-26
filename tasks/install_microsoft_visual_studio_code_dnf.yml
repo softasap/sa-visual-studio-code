@@ -1,0 +1,22 @@
+---
+- name: Visual Studio Code | Check if _package is installed
+  command: dnf list installed code
+  register: vscode_check_rpm
+  become: yes
+  failed_when: vscode_check_rpm.rc > 1
+  changed_when: vscode_check_rpm.rc == 1
+  tags:
+    -vscode
+
+- name: Visual Studio Code | Download package
+  get_url: url="https://go.microsoft.com/fwlink/?LinkID=760867" dest="/tmp/vscode.rpm"
+  when: vscode_check_rpm.rc == 1
+  tags:
+    -vscode
+
+- name: Visual Studio Code | Install package
+  dnf: name="/tmp/vscode.rpm" state=present
+  become: yes
+  when: vscode_check_rpm.rc == 1
+  tags:
+    -vscode
