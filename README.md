@@ -6,6 +6,13 @@ sa-visual-studio-code
 You could benefit from this editor, if you use to develop with .net core for linux.
 See also  https://github.com/softasap/sa-mono-aspnet
 
+Suggested extensions:
+
+christian-kohler.npm-intellisense https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense
+christian-kohler.path-intellisense https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense
+waderyan.gitblame https://marketplace.visualstudio.com/items?itemName=waderyan.gitblame
+alefragnani.Bookmarks https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks
+ms-vscode.atom-keybindings https://marketplace.visualstudio.com/items?itemName=ms-vscode.atom-keybindings
 
 
 Simple:
