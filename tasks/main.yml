@@ -5,9 +5,12 @@
 
 # Install package
 - include: install_microsoft_visual_studio_code_apt.yml
-  when: ansible_distribution == 'Debian' and ansible_pkg_mgr == 'apt'
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and ansible_pkg_mgr == 'apt'
 - include: install_microsoft_visual_studio_code_dnf.yml
   when: (ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'Fedora') and (ansible_pkg_mgr == 'dnf')
+- include: install_microsoft_visual_studio_code_yum.yml
+  when: (ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'Fedora') and (ansible_pkg_mgr == 'yum')
 
 # Platform independent tasks
 - include: install_extensions.yml
+  when: docker_test is not defined

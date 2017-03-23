@@ -1,0 +1,30 @@
+---
+- name: Visual Studio Code | Check if _package is installed
+  command: yum list installed code
+  register: vscode_check_rpm
+  become: yes
+  failed_when: vscode_check_rpm.rc > 1
+  changed_when: vscode_check_rpm.rc == 1
+  tags:
+    -vscode
+
+- name: Visual Studio Code | Import rpm key
+  rpm_key: key="https://packages.microsoft.com/keys/microsoft.asc"  state=present
+  become: yes
+  when: vscode_check_rpm.rc == 1
+  tags:
+    -vscode
+
+- name: Visual Studio Code | Add repository
+  yum_repository:  name="vscode" description="Visual Studio Code"  baseurl="https://packages.microsoft.com/yumrepos/vscode" enabled="yes"
+  become: yes
+  when: vscode_check_rpm.rc == 1
+  tags:
+    -vscode
+
+- name: Visual Studio Code | Install package
+  yum: pkg="code" state=present
+  become: yes
+  when: vscode_check_rpm.rc == 1
+  tags:
+    -vscode
