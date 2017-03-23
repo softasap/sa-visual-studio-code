@@ -9,22 +9,15 @@
     -vscode
 
 - name: Visual Studio Code | Download package
-  get_url: url="http://go.microsoft.com/fwlink/?LinkID=760868" dest="/tmp/vsvode.deb"
+  get_url: url="http://go.microsoft.com/fwlink/?LinkID=760868" dest="/tmp/vscode.deb"
   when: vscode_check_deb.rc == 1
   tags:
     -vscode
 
 - name: Visual Studio Code | Install package
-  apt: deb="/tmp/vsvode.deb"
+  apt: deb="/tmp/vscode.deb"
   become: true
   when: vscode_check_deb.rc == 1
   tags:
     -vscode
 
-- name: Visual Studio Code | Install Extensions
-  shell: code --install-extension {{item}} {{extra_extension_params | default("")}}
-  with_items: "{{vs_code_packages | default([])}}"
-  when: docker_test is not defined
-  tags:
-    -vscode
-    
