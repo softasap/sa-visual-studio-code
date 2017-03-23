@@ -1,8 +1,15 @@
 ---
 
+- name: Visual Studio Code | Get installed extensions
+  command: code --list-extensions
+  changed_when: False
+  register: installed_extensions
+  tags:
+    -vscode
+
 - name: Visual Studio Code | Install extensions
   shell: code --install-extension {{item}} {{extra_extension_params | default("")}}
   with_items: "{{vs_code_packages | default([])}}"
-  when: docker_test is not defined
+  when: (docker_test is not defined) and (item not in installed_extensions.stdout_lines)
   tags:
     -vscode
