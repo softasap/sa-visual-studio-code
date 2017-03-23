@@ -1,6 +1,8 @@
 ---
 # tasks file for sa-visual-studio-code
 
+- debug: msg="{{ansible_distribution}} with {{ansible_pkg_mgr}}"
+
 # Install package
 - include: install_microsoft_visual_studio_code_apt.yml
   when: ansible_distribution == 'Debian' and ansible_pkg_mgr == 'apt'
